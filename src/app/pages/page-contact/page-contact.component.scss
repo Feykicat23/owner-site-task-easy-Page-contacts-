@@ -1,0 +1,369 @@
+// * {
+//     box-sizing: border-box;
+// }
+
+.mainContainer {
+   font-style: Inter;
+   font-weight: 400px;
+   color: #EFEDFD99;
+   padding: 15px;
+}
+
+h1 {
+    text-align: left;
+    margin: 15px;
+}
+
+.whiteBig {
+    color: #FFFFFF;
+    display: inline;
+}
+
+p {
+    font-size: 13px;
+    line-height: 16px;
+    margin: auto;
+}
+
+.type-info {
+    margin: 15px 35px 10px 0px;
+    // width: 278px;
+}
+
+.mainSectionBlock {
+    display: flex;
+    flex-wrap: wrap;
+    // border: 1px solid green;
+}
+
+.countrySection {
+    display: flex;
+    flex-direction: column;
+    margin: 17px;
+    
+}
+
+.highlighted {
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.11) 100%);
+    background-clip: content-box;
+    animation: animationOpacity 1s alternate;
+    animation-timing-function: linear;
+}
+
+.other-class {
+    background: none;
+}
+
+.countrtyInfo {
+    margin: 10px 10px 15px 0px;
+}
+
+.countrty {
+    display: flex;
+    align-items: center;
+  }
+
+.imageContainer {
+    padding-left: 7px;
+}
+
+.socialWebButtons {
+    width: 600px;
+    display: flex;
+    align-content: space-between;
+}
+
+.icons {
+    margin-right: 12px;
+}
+
+.countrtyStartInvisible {
+    display: none;
+}
+
+.countrtyBrighter {
+    display: block; 
+    animation: animationOpacity 5s alternate;
+    animation-timing-function: linear;
+    // transition: opacity 10s ease-in-out;
+}
+
+@media only screen and (min-width: 389px) {
+    body {
+        width: 389px;
+        height: 1751px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 40px;
+       
+    }
+
+    .whiteBig {
+        line-height: 23.95px;
+    }
+
+    .countrySection {
+        width: 147px;
+        // padding-bottom: 20px;
+    }
+
+    .mainSectionBlock {
+        max-width: 667px;
+    }
+
+    .workMailandServiceNumber, .marginContainer {
+        margin: 15px;
+    }
+
+    .socialWebButtons {
+        margin: 15px;
+    }
+
+  }  
+
+
+
+  @keyframes animationOpacity {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+  
+@media only screen and (min-width: 769px) {
+    body {
+        width: 768px;
+        height: 1527px;
+        padding: 55px;
+    }
+
+    .mainContainer {
+        padding: 35px;
+     }
+     
+
+    h1 {
+        font-size: 36px;
+        line-height: 50px;
+    }
+
+    .whiteBig {
+        font-size: 20px;
+        line-height: 29.94px;
+    }
+
+    .mainSectionBlock {
+        width: 697px;
+    }
+
+    .workMailandServiceNumber {
+        display: flex;
+        margin: 15px;
+        white-space: nowrap;
+    }
+
+    .marginContainer, .socialWebButtons {
+        margin: 15px;
+    }
+
+    .icons, .iconsSocial {
+        width: 60px;
+        height: 60px;
+    }
+
+    .countryImager {
+        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        background-position: right center; 
+        position: absolute;
+        width: 520.65px;
+        height: 594.6px;
+        top: 156px;
+        left: 578px;
+        opacity: 1;
+        // overflow: hidden;
+
+        
+    }
+
+  }  
+  
+
+@media only screen and (min-width: 1280px) {
+    body {
+        width: 1280px;
+        height: 1422px;
+        // padding: 70px;
+    }
+
+    .mainContainer {
+        padding: 70px 50px 0px 70px;
+     }
+     
+
+    h1 {
+        font-size: 48px;
+        line-height: 50px;
+    }
+
+    .whiteBig {
+        font-size: 24px;
+        line-height: 35.92px;
+    }
+
+    .mainSectionBlock {
+        width: 697px;
+
+    }
+
+    .workMailandServiceNumber {
+        display: flex;
+        white-space: nowrap;
+    }
+
+    .marginContainer, .socialWebButtons, .workMailandServiceNumber, h1 {
+        margin: 25px;
+    }
+
+    .icons, .iconsSocial {
+        width: 75px;
+        height: 75px;
+        margin-right: 25px;
+    }
+
+    .countrySection {
+        margin: 30px;
+    }
+
+    .clock {
+        width: 25px;
+        height: 25px;
+    }
+
+    .article {
+        display: block;
+    }
+    
+
+    .countrtyImageNormal {
+        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        background-position: right center; 
+        position: absolute;
+        // display: block;
+        width: 520.65px;
+        height: 594.6px;
+        top: 300px;
+        left: 690px;
+        // opacity: 20%;
+        // overflow: hidden;
+    }
+
+  }  
+  
+  @media only screen and (min-width: 1920px) {
+    body {
+        width: 1920px;
+        height: 1766px;
+        // padding: 70px;
+    }
+
+    .mainContainer {
+        padding: 70px;
+     }
+     
+
+    h1 {
+        font-size: 64px;
+        line-height: 74.4px;
+    }
+
+    .type-info {
+        line-height: 16px;
+        margin: 45px 160px 10px 0px;
+    }
+
+
+    p {
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    .whiteBig {
+        font-size: 36px;
+        line-height: 53.89px;
+    }
+
+    .mainSectionBlock {
+        width: 1400px;
+        max-width: none;
+        margin: 60px;
+    }
+
+    .workMailandServiceNumber {
+        display: flex;
+        white-space: nowrap;
+    }
+
+    .street {
+        width: 180px;
+    }
+
+    .marginContainer, .workMailandServiceNumber, h1 {
+        margin: 65px;
+    }
+
+    .socialWebButtons {
+        margin: 65px 65px 35px 0px;
+    }
+
+    .icons, .iconsSocial {
+        width: 100px;
+        height: 100px;
+        margin-right: 55px;
+    }
+
+    .countrySection {
+        margin: 0px;
+        width: 369px;
+        height: 222px;
+    }
+
+    .clock {
+        width: 31px;
+        height: 31px;
+    }
+
+    .article {
+        display: block;
+    }
+
+
+    .countrtyImageNormal {
+        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        background-position: right center; 
+        position: absolute;
+        // display: block;
+        width: 802px;
+        height: 996.27px;
+        top: 400px;
+        left: 1259.8px;
+        // right: 9px;
+        // opacity: 20%;
+        // overflow: hidden;
+    }
+
+  }  
+  
