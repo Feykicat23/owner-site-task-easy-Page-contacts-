@@ -1,0 +1,243 @@
+@import '/src/styles/variables';
+
+section {
+    padding: 50px 0 50px;
+    position: relative;
+    overflow: hidden;
+
+    & > * {
+        position: relative;
+        z-index: 10;
+    }
+}
+
+.section-bg {
+    position: absolute !important;
+    left: -100px;
+    bottom: 0;
+    height: 110%;
+    max-height: 870px;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.title {
+    text-align: right;
+}
+
+.inputs-wrapper {
+    margin-left: auto;
+    max-width: 600px;
+
+    .row {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .col {
+        width: 100%;
+    }
+}
+
+.select-top {
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-right: 10px;
+        width: 21px;
+    }
+}
+
+.role-description {
+    &-wrapper {
+        min-height: 170px;
+        margin-bottom: 30px;
+    }
+
+    min-height: 30px;
+    font-size: 16px;
+    padding: 15px 20px;
+    border-radius: 7px;
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: $quick-duration, opacity $quick-duration;
+
+    &.active {
+        opacity: 1;
+    }
+
+    &.transparent {
+        opacity: 0 !important;
+    }
+}
+
+.near-button-text {
+    font-size: 16px;
+
+    &-above {
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    &-below {
+        display: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+.submit-button {
+    background: none;
+    outline: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $quick-duration;
+    backdrop-filter: blur(10px);
+}
+
+:host {
+    .owner-light-theme & {
+        .role-description {
+            color: map-get($lightColors, 'primary');
+            background: map-get($lightColors, 'interactive');
+        }
+
+        .near-button-text {
+            color: map-get($lightColors, 'primary');
+        }
+
+        .submit-button {
+            color: map-get($lightColors, 'primary');
+            border-color: #00000014;
+            box-shadow: 0px -23px 54px -14px rgba(150, 150, 150, 0.2) inset;
+
+            &:hover, &:focus {
+                box-shadow: 0px -23px 74px -14px rgba(150, 150, 150, 0.3) inset;
+            }
+        }
+
+        @media (max-width: $phone) {
+            .section-bg {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .owner-dark-theme & {
+        .role-description {
+            color: map-get($darkColors, 'primary');
+            background: map-get($darkColors, 'interactive');
+        }
+
+        .near-button-text {
+            color: map-get($darkColors, 'primary');
+        }
+
+        .submit-button {
+            color: map-get($darkColors, 'primary');
+            border-color: #FFFFFF4A;
+            box-shadow: 0px -23px 54px -14px #FFFFFF40 inset;
+
+            &:hover, &:focus {
+                box-shadow: 0px -23px 74px -14px #FFFFFF4D inset;
+            }
+        }
+
+        @media (max-width: $phone) {
+            .section-bg {
+                opacity: 0.4;
+            }
+        }
+    }
+}
+
+@media (max-width: $desktop) {
+    .container {
+        max-width: 980px;
+    }
+    .section-bg {
+        left: -20%;
+    }
+    .near-button-text {
+        &-above {
+            display: none;
+        }
+
+        &-below {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    section {
+        padding-top: 30px;
+        padding-bottom: 0;
+    }
+    .section-bg {
+        max-height: 600px;
+        bottom: 15%;
+    }
+    .inputs-wrapper {
+        .row {
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+    }
+}
+
+@media (max-width: $phone) {
+    .section-bg {
+        max-height: 400px;
+    }
+    .title {
+        text-align: center;
+    }
+    .inputs-wrapper {
+        .row {
+            flex-direction: column;
+        }
+
+        .ant-input {
+            height: 50px;
+        }
+
+        .ant-select {
+            height: 50px;
+        }
+    }
+    .role-description {
+        &-wrapper {
+            min-height: 140px;
+            margin-bottom: 0;
+        }
+
+        font-size: 14px;
+    }
+    .submit-button {
+        height: 50px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+    .near-button-text {
+        font-size: 11px;
+        max-width: 260px;
+
+        &-below {
+            margin: 10px auto 0;
+        }
+    }
+}

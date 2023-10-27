@@ -1,0 +1,21 @@
+<header [class.open]="isOpenMenu" [class.hidden]="hideHeader">
+  <a href="/" class="logo">
+    <span class="logo__img">
+      <img ngSrc="assets/images/icons/logo.svg" width="32" height="32" alt="logo" draggable="false">
+    </span>
+    <span class="logo__text">OWNER</span>
+  </a>
+  <span class="simple-spacer"></span>
+  <nav>
+    <!--    <button class="simple-circle"-->
+    <!--            (click)="changeTheme(isLight ? ThemeType.OwnerDarkTheme : ThemeType.OwnerLightTheme )">-->
+    <!--      <img [src]="isLight ? 'assets/images/icons/sun.svg' : 'assets/images/icons/moon.svg'" width="20" height="20"-->
+    <!--           alt="theme" draggable="false">-->
+    <!--    </button>-->
+    <div class="simple-circle">EN</div>
+    <owner-hamburger [state]="isOpenMenu ? 'cross' : 'initial'"
+                     (click)="isOpenMenu = !isOpenMenu"></owner-hamburger>
+  </nav>
+
+  <div class="simple-linear" [class.hide-line]="hideLine && !isOpenMenu"></div>
+</header>

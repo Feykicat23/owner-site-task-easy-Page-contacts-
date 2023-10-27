@@ -1,0 +1,70 @@
+@import '/src/styles/variables';
+
+:host {
+    .owner-dark-theme & {
+        background: map-get($darkColors, 'background');
+    }
+
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding: 30px;
+
+    @media (orientation: landscape) {
+        &.is-mobile-device {
+            display: flex;
+        }
+    }
+
+    .modal {
+        border-radius: 17px;
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        max-width: 300px;
+    }
+
+    .phone-image {
+        display: block;
+        margin: 0 auto 0;
+        height: 140px;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    @media (max-height: 360px) {
+        .phone-image {
+            height: 120px;
+        }
+
+        .title {
+            font-size: 21px;
+        }
+
+        .description {
+            font-size: 14px;
+        }
+    }
+}

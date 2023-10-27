@@ -1,0 +1,63 @@
+@import '/src/styles/variables';
+
+:host {
+    header {
+        padding: 1px $header-padding 0;
+
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: calc($header-height-desktop + 1px);
+        width: 100%;
+        overflow: hidden;
+        z-index: 100;
+        backdrop-filter: blur(30px);
+
+        transition: height $swift-duration $swift-timing-function, transform $swift-duration $swift-timing-function;
+
+        &.open {
+            height: 600px;
+            max-height: 100%;
+        }
+
+        &.hidden {
+            transform: translateY(-100%);
+        }
+
+        @media (max-width: $desktop) {
+            height: calc($header-height + 1px);
+
+            &.open {
+                height: 100%;
+            }
+        }
+    }
+
+    .simple-linear {
+        position: absolute;
+        bottom: 0;
+        margin: 0 auto;
+        width: calc(100% - $header-padding * 2);
+        transition: opacity $swift-duration $swift-timing-function;
+    }
+
+    .simple-vertical-linear {
+        height: 21px;
+    }
+
+    nav {
+        display: flex;
+        gap: 25px;
+        height: $header-height-desktop;
+        align-items: center;
+
+        @media (max-width: $desktop) {
+            height: $header-height;
+        }
+    }
+
+    .hide-line {
+        opacity: 0;
+    }
+}

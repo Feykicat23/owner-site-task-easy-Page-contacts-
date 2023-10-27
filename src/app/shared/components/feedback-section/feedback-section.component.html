@@ -1,0 +1,189 @@
+<section>
+  <video autoplay muted loop *ngIf="isLight; else darkTheme" class="section-bg">
+    <source src="assets/images/video/light.webm" type="video/webm" codecs="vp8, vorbis">
+  </video>
+  <ng-template #darkTheme>
+    <video autoplay muted loop class="section-bg">
+      <source src="assets/images/video/dark.webm" type="video/webm" codecs="vp8, vorbis">
+    </video>
+  </ng-template>
+  <div class="container">
+    <h2 class="title">Создадим<br>будущее вместе</h2>
+    <form nz-form [formGroup]="feedbackForm" (ngSubmit)="handleSubmit()">
+      <div class="inputs-wrapper">
+        <div class="row">
+          <div class="col">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" nz-input formControlName="userName" placeholder="Имя" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="col">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" nz-input formControlName="phone" placeholder="Телефон" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-select
+                  formControlName="role"
+                  nzPlaceHolder="Выбери свою роль"
+                  [nzOptionHeightPx]="46"
+                  [nzSuffixIcon]="selectSuffix"
+                  [nzCustomTemplate]="selectTop"
+                  (nzOpenChange)="handleOpenChange($event)"
+                  (ngModelChange)="handleRoleSelect($event)"
+                >
+                  <nz-option *ngFor="let option of roleOptions" [nzLabel]="option.label" [nzValue]="option.value"
+                             nzCustomContent>
+                    <span class="select-option-content">
+                      <ng-container *ngIf="option.icon === 'teamMemberIcon'"
+                                    [ngTemplateOutlet]="teamMemberIcon"></ng-container>
+                      <ng-container *ngIf="option.icon === 'partnerIcon'"
+                                    [ngTemplateOutlet]="partnerIcon"></ng-container>
+                      <ng-container *ngIf="option.icon === 'investorIcon'"
+                                    [ngTemplateOutlet]="investorIcon"></ng-container>
+                      {{option.label}}
+                    </span>
+                  </nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+            <ng-template #selectSuffix>
+              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+              </svg>
+            </ng-template>
+            <ng-template #selectTop let-selected>
+              <span class="select-top">
+                <ng-container *ngIf="selectedRoleIcon === 'teamMemberIcon'"
+                              [ngTemplateOutlet]="teamMemberIcon"></ng-container>
+                <ng-container *ngIf="selectedRoleIcon === 'partnerIcon'"
+                              [ngTemplateOutlet]="partnerIcon"></ng-container>
+                <ng-container *ngIf="selectedRoleIcon === 'investorIcon'"
+                              [ngTemplateOutlet]="investorIcon"></ng-container>
+                {{ selected.nzLabel }}
+              </span>
+            </ng-template>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="role-description-wrapper">
+              <div class="role-description"
+                   [ngClass]="{'active': !!selectedRoleDescription, 'transparent': selectOpen}"><span
+                id="role-description">{{selectedRoleDescription}}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="near-button-text near-button-text-above">Оставляя заявку, вы соглашаетесь на обработку персональных
+        данных
+      </div>
+
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button class="submit-button">Оставить заявку</button>
+        </nz-form-control>
+      </nz-form-item>
+
+      <div class="near-button-text near-button-text-below">Оставляя заявку, вы соглашаетесь на обработку персональных
+        данных
+      </div>
+    </form>
+  </div>
+
+  <nz-modal [(nzVisible)]="modalVisible" nzTitle="" nzCentered [nzFooter]="null" [nzCloseIcon]="modalCloseIcon"
+            (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      <svg width="120" height="99" viewBox="0 0 120 99" fill="none" xmlns="http://www.w3.org/2000/svg"
+           class="message-envelope">
+        <g filter="url(#filter0_d_255_8918)">
+          <rect x="10" y="14" width="70" height="49" rx="8" fill="#E6E6E6" />
+        </g>
+        <path d="M17 22L45 45.2394L73 22M62.5 42.9155L73 55M27.5 42.9155L17 55" stroke="black" stroke-opacity="0.76"
+              stroke-linecap="round" />
+        <defs>
+          <filter id="filter0_d_255_8918" x="0" y="0" width="120" height="99" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                           result="hardAlpha" />
+            <feOffset dx="15" dy="11" />
+            <feGaussianBlur stdDeviation="12.5" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.44 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_255_8918" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_255_8918" result="shape" />
+          </filter>
+        </defs>
+      </svg>
+      <div class="message-title">Вы в списке!</div>
+      <div class="message-description">You will receive a confirmation email and a brief survey to help us determine if
+        Fey is a good fit for you.
+      </div>
+      <button class="message-button button-default" (click)="handleOk()">Ура, жду звонка</button>
+      <div class="message-additional">You will receive a confirmation email and a brief survey to help us determine if
+        Fey is a good fit for you.
+      </div>
+    </ng-container>
+  </nz-modal>
+  <ng-template #modalCloseIcon>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+         (click)="handleCancel()">
+      <path d="M18 18L6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </ng-template>
+
+  <ng-template #teamMemberIcon>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 20C7 18.3431 9.23858 17 12 17C14.7614 17 17 18.3431 17 20" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M18 14.25C19.7659 14.7129 21 15.7702 21 17.0004" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6 14.25C4.2341 14.7129 3 15.7702 3 17.0004" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M12 14C13.6569 14 15 12.6569 15 11C15 9.34315 13.6569 8 12 8C10.3431 8 9 9.34315 9 11C9 12.6569 10.3431 14 12 14Z"
+        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M18 10.2361C18.6137 9.68679 19 8.8885 19 8C19 6.34315 17.6569 5 16 5C15.2316 5 14.5308 5.28885 14 5.76389"
+        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6 10.2361C5.38625 9.68679 5 8.8885 5 8C5 6.34315 6.34315 5 8 5C8.76835 5 9.46924 5.28885 10 5.76389"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </ng-template>
+  <ng-template #partnerIcon>
+    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M11.7031 3.02183C11.4625 3.10933 10.6094 3.52496 9.84375 3.96246C9.05625 4.39996 8.05 4.90308 7.56875 5.05621C6.69375 5.36246 5.6875 6.36871 5.6875 6.91559C5.6875 7.09059 5.84062 7.52809 6.01562 7.87809C6.51875 8.84059 7.63437 9.10309 9.77813 8.75309C10.6969 8.59996 11.6813 8.40309 11.9656 8.29371C12.3813 8.14059 12.6438 8.33746 13.9125 9.69371C15.6188 11.5312 15.925 12.1 15.5531 12.5593C15.4 12.7343 15.0719 12.9093 14.8313 12.9531C14.5688 12.9968 14.1969 13.3031 14 13.675C13.7375 14.1562 13.4531 14.3531 12.9281 14.3968C12.3594 14.4625 12.1625 14.6156 11.9219 15.1843C11.5938 15.9281 11.2438 16.1906 10.4781 16.1906C10.2375 16.1906 9.975 16.4093 9.84375 16.7156C9.47187 17.7437 8.44375 17.6343 7.175 16.4531C6.51875 15.8625 5.90625 15.9281 5.90625 16.6062C5.90625 17.1531 7.4375 18.5093 8.29063 18.7062C9.16563 18.8812 9.77813 18.6843 10.675 17.9187C11.0688 17.5687 11.5281 17.2843 11.6813 17.2843C11.8563 17.2843 12.0969 17.1531 12.2281 16.9781C12.425 16.7593 13.1469 16.65 14.7438 16.5843C16.7781 16.5187 17.0844 16.4531 17.85 15.9281C18.3313 15.5781 18.9219 15.3156 19.1625 15.3156C20.0813 15.3156 20.125 15.0093 20.125 9.93434C20.125 4.29059 20.1469 4.37809 18.2875 4.37809C17.0406 4.37809 16.5156 4.70621 16.7563 5.34059C16.8438 5.58121 17.1719 5.69059 17.85 5.69059H18.8125V9.80309V13.9375L17.5 14.6156C16.7563 15.0093 15.8594 15.3156 15.4219 15.3156C14.7219 15.3156 14.6781 15.2937 14.8969 14.8125C15.0063 14.55 15.4 14.1562 15.75 13.9593C16.0781 13.7625 16.5375 13.3468 16.7344 13.0406C17.3906 12.0343 17.0406 11.2031 14.9406 8.86246C13.2781 7.02496 12.9719 6.76246 12.4906 6.87184C12.1625 6.93746 11.2438 7.13434 10.3906 7.30934C9.55938 7.50621 8.55313 7.65934 8.18125 7.65934C7.56875 7.65934 7 7.33121 7 6.98121C7 6.89371 8.225 6.21558 9.73438 5.47184L12.4688 4.09371L13.8031 4.59684C14.9625 5.01246 15.1813 5.03434 15.4656 4.77184C15.9688 4.24684 15.5531 3.76558 14.1531 3.30621C12.775 2.82496 12.4469 2.80308 11.7031 3.02183Z"
+        fill="currentColor" />
+      <path
+        d="M1.225 4.28972C0.940625 4.5741 0.875 5.29597 0.875 8.75222C0.875 13.171 0.9625 13.5647 2.0125 13.5647C2.25313 13.5647 2.8875 13.9585 3.4125 14.4397C4.41875 15.3803 5.03125 15.4022 5.03125 14.5491C5.03125 13.9803 3.5 12.5366 2.69063 12.3397C2.1875 12.2085 2.1875 12.1647 2.1875 8.73035V5.25222H3.91563C5.18438 5.25222 5.70938 5.16472 5.90625 4.9241C6.125 4.6616 6.125 4.53035 5.90625 4.26785C5.5125 3.7866 1.70625 3.80847 1.225 4.28972Z"
+        fill="currentColor" />
+    </svg>
+  </ng-template>
+  <ng-template #investorIcon>
+    <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M10.258 0.0155373C8.37008 0.197372 6.57312 0.865883 5.05427 1.9462C4.44993 2.37939 3.36962 3.43831 2.90434 4.05334C2.18235 5.01599 1.64219 6.03213 1.29457 7.10709L1.14482 7.57773H0.561878C0.240993 7.57773 -0.0103671 7.59912 0.000329089 7.62586C0.0324176 7.71677 1.46036 9.33724 1.49779 9.32655C1.51918 9.3212 1.87751 8.93079 2.28396 8.46016L3.03269 7.60447L2.58345 7.58842C2.21978 7.57773 2.12887 7.55633 2.12887 7.49216C2.12887 7.44937 2.20909 7.20336 2.3107 6.94665C3.77073 3.16021 7.38603 0.764269 11.4078 0.914015C13.4935 0.988888 15.3333 1.68414 16.9805 3.01581C20.1626 5.58824 21.291 10.0058 19.7294 13.7868C18.9967 15.5571 17.7078 17.1027 16.0981 18.1402C15.4991 18.5252 14.4722 18.9959 13.7877 19.1991C12.9373 19.4558 12.2902 19.5628 11.3543 19.5949C7.35394 19.7393 3.69051 17.2738 2.26792 13.482C2.07539 12.9739 1.81868 11.9418 1.77589 11.5086L1.73846 11.1609H1.28922H0.83463L0.872067 11.4925C1.00577 12.7547 1.55127 14.3324 2.24652 15.4822C2.90969 16.5839 4.08092 17.8621 5.05427 18.5573C8.83536 21.2474 13.8412 21.1351 17.4297 18.2739C19.8738 16.3272 21.3285 13.3323 21.3285 10.2518C21.3285 5.2834 17.6811 0.988888 12.7448 0.14389C12.1191 0.0369301 10.7767 -0.0325966 10.258 0.0155373Z"
+        fill="currentColor" />
+      <path
+        d="M10.6213 5.873L10.6052 6.41316L10.2683 6.48268C9.56769 6.62708 9.03823 6.98005 8.77083 7.48812C8.64247 7.72879 8.62643 7.8197 8.62643 8.29568C8.62643 8.89467 8.7013 9.10324 9.06497 9.499C9.29494 9.75571 9.89927 10.1461 10.3271 10.3066L10.632 10.4242V11.8682V13.3122L10.1667 13.2801C9.90462 13.2641 9.48747 13.1892 9.22542 13.1143C8.96871 13.0394 8.74944 12.9753 8.73339 12.9753C8.67991 12.9753 8.38577 13.6919 8.4232 13.7293C8.5676 13.863 9.61583 14.077 10.3378 14.109L10.6052 14.1251L10.6213 14.6439L10.6373 15.168H11.0598H11.4823L11.4984 14.6225L11.5144 14.0823L11.8567 14.0128C12.6108 13.8577 13.2793 13.3924 13.552 12.8309C13.7178 12.4939 13.782 11.9003 13.6857 11.5527C13.5306 10.9858 13.0332 10.5151 12.092 10.0552L11.4877 9.76106V8.47752V7.19933H11.7711C12.0011 7.19933 12.568 7.30094 13.1776 7.45069C13.2686 7.47208 13.306 7.42395 13.429 7.11376C13.5039 6.91588 13.5574 6.73939 13.5467 6.718C13.4825 6.61104 12.4664 6.42385 11.7551 6.38642L11.5144 6.37037L11.4984 5.84626L11.4823 5.3275H11.0598H10.6373L10.6213 5.873ZM10.632 8.29568C10.632 9.10324 10.6159 9.33856 10.5624 9.33856C10.4822 9.33856 10.1239 9.10859 9.91532 8.91606C9.63187 8.654 9.52491 8.16733 9.6907 7.85179C9.84045 7.563 10.2736 7.2635 10.541 7.25281C10.6266 7.25281 10.632 7.33838 10.632 8.29568ZM11.9636 11.0179C12.5145 11.3548 12.7177 11.6436 12.7177 12.0928C12.7177 12.3977 12.6428 12.5848 12.4343 12.8095C12.2471 13.0073 11.7978 13.2427 11.6107 13.2427H11.4877V12.0393C11.4877 10.6595 11.4609 10.713 11.9636 11.0179Z"
+        fill="currentColor" />
+    </svg>
+  </ng-template>
+</section>

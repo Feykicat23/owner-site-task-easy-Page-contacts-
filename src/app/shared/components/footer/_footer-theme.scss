@@ -1,0 +1,30 @@
+@mixin owner-footer-theme($theme) {
+    footer {
+        border-top-color: map-get($theme, 'border');
+        color: map-get($theme, 'secondary');
+
+        a {
+            color: map-get($theme, 'secondary');
+
+            &:hover, &:focus {
+                color: map-get($theme, 'secondary-hover');
+            }
+        }
+
+        .top-row {
+            border-bottom-color: map-get($theme, 'border');
+        }
+
+        .nav-group {
+            &__title {
+                color: map-get($theme, 'primary');
+            }
+        }
+
+        .bottom-row {
+            .item::after {
+                background: map-get($theme, 'secondary');
+            }
+        }
+    }
+}
