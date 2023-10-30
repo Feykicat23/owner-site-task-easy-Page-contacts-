@@ -17,11 +17,11 @@ import { ChangeDetectorRef } from '@angular/core';
 export class PageContactComponent extends BasePageComponent {
     public countries = [
       { name: 'РОССИЯ', isHighlighted: false, image: 'assets/images/page-conctact-images/Russia1.svg' },
-      { name: 'АРГЕНТИНА', isHighlighted: false, image: 'assets/images/page-conctact-images/Turkey2.svg' },
-      { name: 'ТУРЦИЯ', isHighlighted: false, image: 'assets/images/page-conctact-images/Thailand3.svg' },
+      { name: 'АРГЕНТИНА', isHighlighted: false, image: 'assets/images/page-conctact-images/Argentina2.svg' },
+      { name: 'ТУРЦИЯ', isHighlighted: false, image: 'assets/images/page-conctact-images/Turkey3.svg' },
       { name: 'ЧЕРНОГОРИЯ', isHighlighted: false, image: 'assets/images/page-conctact-images/Montenegro4.svg' },
       { name: 'КАМБОДЖА', isHighlighted: false, image: 'assets/images/page-conctact-images/Kambodga5.svg' },
-      { name: 'ТАЙЛАНД', isHighlighted: false, image: 'assets/images/page-conctact-images/Argentina6.svg' }
+      { name: 'ТАЙЛАНД', isHighlighted: false, image: 'assets/images/page-conctact-images/Thailand6.svg' }
     ];
   
 
@@ -32,6 +32,8 @@ export class PageContactComponent extends BasePageComponent {
     public animationGoesBy = true;
     public alreadyRunning = false;
 
+    public curentIndexCountry = 0;
+
     public outOfCountrySections(): void {
       if (this.alreadyRunning) {
         return; // Если функция уже выполняется, не вызывать её повторно
@@ -39,8 +41,7 @@ export class PageContactComponent extends BasePageComponent {
 
         this.alreadyRunning = true;
 
-        const interval = 3500; 
-        let i = 0;
+        const interval = 1500; 
     
         const changeCountry = (): void => {
             if (!this.animationGoesBy) {
@@ -48,13 +49,12 @@ export class PageContactComponent extends BasePageComponent {
             }
           
             this.countries.forEach(country => (country.isHighlighted = false));
-            // console.log(this.countries[i]);
 
-    
-            const currentCountry = this.countries[i];
+            // console.log(this.countries[i]);
+            const currentCountry = this.countries[this.curentIndexCountry];
     
             currentCountry.isHighlighted = true;
-            i = (i + 1) % this.countries.length; 
+            this.curentIndexCountry = (this.curentIndexCountry + 1) % this.countries.length;
         this.changeDetectorRef.detectChanges();
         };
     
@@ -64,9 +64,14 @@ export class PageContactComponent extends BasePageComponent {
     
     public onMouseEnter(country: any): void {
       this.countries.forEach(country => (country.isHighlighted = false));
+
+      const i = this.countries.findIndex(name => name === country);
+
+      this.curentIndexCountry = (i + 1) % this.countries.length;
       country.isHighlighted = true;
       this.animationGoesBy = false;
       this.alreadyRunning = true;
+
     }
   
     public onMouseLeave(country: any): void {

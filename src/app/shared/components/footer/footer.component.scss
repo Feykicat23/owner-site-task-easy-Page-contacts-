@@ -131,7 +131,7 @@ nav {
 
 @media (max-width: $desktop) {
     .container {
-        max-width: 850px;
+        max-width: 800px;
     }
 
     .nav-group {
@@ -145,7 +145,7 @@ nav {
 
 @media (max-width: $tablet) {
     .container {
-        max-width: 500px;
+        max-width: 650px;
 
         &__bg {
             display: none;

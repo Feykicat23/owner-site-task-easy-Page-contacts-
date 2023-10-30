@@ -1,20 +1,25 @@
-// * {
-//     box-sizing: border-box;
-// }
+$phone: 480px;
+$tablet: 768px;
+$desktop: 1280px;
 
-.mainContainer {
-   font-style: Inter;
-   font-weight: 400px;
+.container {
    color: #EFEDFD99;
-   padding: 15px;
+//    padding: 15px;
+   position: relative;
+
 }
 
-h1 {
+.main-container {
+    overflow: hidden;
+    // border: 1px solid red;
+}
+
+.title {
     text-align: left;
-    margin: 15px;
+    // margin: 15px;
 }
 
-.whiteBig {
+.white-big{
     color: #FFFFFF;
     display: inline;
 }
@@ -23,6 +28,7 @@ p {
     font-size: 13px;
     line-height: 16px;
     margin: auto;
+    color:  rgba(239, 237, 253, 0.6);
 }
 
 .type-info {
@@ -30,44 +36,37 @@ p {
     // width: 278px;
 }
 
-.mainSectionBlock {
+.main-section-block {
     display: flex;
     flex-wrap: wrap;
     // border: 1px solid green;
 }
 
-.countrySection {
+.country-section {
     display: flex;
     flex-direction: column;
     margin: 17px;
-    
 }
 
-.highlighted {
-    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.11) 100%);
-    background-clip: content-box;
-    animation: animationOpacity 1s alternate;
-    animation-timing-function: linear;
+.country-info {
+    margin: 8px 10px 15px 0px;
 }
 
-.other-class {
-    background: none;
+.street, .number {
+    display: flex;
+    // width: 175px;
 }
 
-.countrtyInfo {
-    margin: 10px 10px 15px 0px;
-}
-
-.countrty {
+.country {
     display: flex;
     align-items: center;
   }
 
-.imageContainer {
-    padding-left: 7px;
+.image-container {
+    padding-left: 13px;
 }
 
-.socialWebButtons {
+.social-web-buttons {
     width: 600px;
     display: flex;
     align-content: space-between;
@@ -77,171 +76,300 @@ p {
     margin-right: 12px;
 }
 
-.countrtyStartInvisible {
+.highlighted {
+    position: relative;
+    // opacity: 1;
+}
+
+.highlighted::before { 
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.11) 100%);
+    background-clip: content-box;
+    animation: animationOpacity 1.5s;
+    opacity: 1;
+    // transition: 3s ease;
+}
+
+// .other-class {
+//     background: none;
+// }
+
+.country-start-invisible {
     display: none;
+    // animation: fadeOut 1.5s;
 }
 
-.countrtyBrighter {
-    display: block; 
-    animation: animationOpacity 5s alternate;
-    animation-timing-function: linear;
-    // transition: opacity 10s ease-in-out;
+.country-brighter { 
+    display: flex; 
+    animation: animationOpacity 1.5s;
 }
+  
+  @keyframes animationOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
 
-@media only screen and (min-width: 389px) {
+  .icons-social {
+   
+    border: 1px solid darkblue;
+    border-radius: 50%;
+    color: grey;
+    transition: fill 0.3s; 
+    border: 1px solid white;
+  }
+
+  a:hover * {
+    fill: gray;
+    // border-color: gray;
+  }
+
+  .icons-social:hover {
+    border-color: gray;
+  }
+
+@media (max-width: $phone) {
     body {
-        width: 389px;
         height: 1751px;
         padding: 10px;
     }
 
-    h1 {
+    .title {
         font-size: 28px;
         line-height: 40px;
-       
+        margin: 25px;
     }
 
-    .whiteBig {
+    .white-big{
         line-height: 23.95px;
     }
 
-    .countrySection {
-        width: 147px;
-        // padding-bottom: 20px;
+    .country-section {
+        margin: 0px;
+        padding: 40px 15px 20px 25px;
+        width: 180px;
+        height: 165px;
     }
 
-    .mainSectionBlock {
-        max-width: 667px;
+    .main-section-block {
+        max-width: 480px;
     }
 
-    .workMailandServiceNumber, .marginContainer {
+    .margin-top {
+        margin-left: 15px;
+    }
+
+    .mail-service, .marginContainer {
+        margin: 10px;
+    }
+
+    .type-info {
         margin: 15px;
     }
 
-    .socialWebButtons {
-        margin: 15px;
+    .margin-top {
+       margin: 30px 0px -16px 25px;
+    }
+
+    .street, .number {
+        width: 140px;
+        // margin: 9px;
+    }
+
+    .arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    .margin-fix {
+        margin-top: 15px;
+    }
+
+    .social-web-buttons {
+        margin: 25px 0px 25px 15px;
+    }
+
+    .icons {
+        margin-right: 30px;
     }
 
   }  
 
-
-
-  @keyframes animationOpacity {
-    0% {
-      opacity: 0;
+  @media (min-width: $phone + 1) and (max-width: $tablet) {
+    .container {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 0px;
     }
 
-    100% {
-      opacity: 1;
-    }
-  }
+    // .main-container {
+    //     padding: 35px;
+    //  }
 
-
-  
-@media only screen and (min-width: 769px) {
-    body {
-        width: 768px;
-        height: 1527px;
-        padding: 55px;
+    
+    .main-section-block {
+        width: 600px;
     }
 
-    .mainContainer {
-        padding: 35px;
-     }
-     
-
-    h1 {
+    .title {
         font-size: 36px;
         line-height: 50px;
+        margin: 25px;
     }
 
-    .whiteBig {
+    .white-big{
         font-size: 20px;
         line-height: 29.94px;
     }
 
-    .mainSectionBlock {
-        width: 697px;
-    }
+    // .main-section-block {
+    //     width: 697px;
+    // }
 
-    .workMailandServiceNumber {
+    .mail-service {
         display: flex;
-        margin: 15px;
+        margin: 25px;
         white-space: nowrap;
     }
 
-    .marginContainer, .socialWebButtons {
-        margin: 15px;
+    .margin-container, .social-web-buttons {
+        margin: 35px 0px 35px 15px;
     }
 
-    .icons, .iconsSocial {
+    .country-section {
+        margin: 0px;
+        padding: 40px 15px 20px 25px;
+        width: 200px;
+        height: 175px;
+    }
+
+    .street, .number {
+        width: 140px;
+        // margin: 9px;
+    }
+
+    .margin-top {
+        margin: 30px 0px -50px 10px;
+    }
+
+    .arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    .margin-fix {
+        margin-top: 12px;
+    }
+
+
+    .icons, .icons-social {
         width: 60px;
         height: 60px;
+        margin-right: 30px;
     }
 
-    .countryImager {
-        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
-        background-repeat: no-repeat; 
-        background-size: cover; 
-        background-position: right center; 
-        position: absolute;
-        width: 520.65px;
-        height: 594.6px;
-        top: 156px;
-        left: 578px;
-        opacity: 1;
-        // overflow: hidden;
+    .main-container {
+        width: 880px;
+        // height: 1500px;
+        overflow: hidden;
+        // border: 1px solid red;
+        position: relative;
+    }
+    
 
-        
+    .country-imager {
+        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right center;
+        position: absolute;
+        width: 587.65px;
+        height: 681.6px;
+        top: 3px;
+        left: 69%;
     }
 
   }  
   
 
-@media only screen and (min-width: 1280px) {
-    body {
-        width: 1280px;
-        height: 1422px;
-        // padding: 70px;
+  @media (min-width: $tablet + 1) and (max-width: $desktop) {
+    // body {
+    //     max-width: 1280px;
+    //     height: 1422px;
+    //     // padding: 70px;
+    // }
+
+    .container {
+       
+        width: 850px;
+        margin: 0 auto;
+        padding: 0px;
     }
 
-    .mainContainer {
-        padding: 70px 50px 0px 70px;
+    .main-container {
+        padding: 70px 50px 0px 0px;
      }
-     
 
-    h1 {
+    //  .main-container {
+    //     overflow: hidden;
+    //     width: 1200px;
+    // }
+     
+    .title {
         font-size: 48px;
         line-height: 50px;
+        margin: 25px;
     }
 
-    .whiteBig {
+    .white-big{
         font-size: 24px;
         line-height: 35.92px;
     }
 
-    .mainSectionBlock {
-        width: 697px;
-
+    .main-section-block {
+        max-width: 850.5px;
     }
 
-    .workMailandServiceNumber {
+    .mail-service {
         display: flex;
         white-space: nowrap;
     }
 
-    .marginContainer, .socialWebButtons, .workMailandServiceNumber, h1 {
-        margin: 25px;
+    .type-info {
+        margin: 15px 145px 10px 0px;
     }
 
-    .icons, .iconsSocial {
+    .mail-service, .title, .margin-container {
+        margin: 25px 0px 25px 45px;
+    }
+
+    .social-web-buttons {
+        margin: 65px 65px 35px 45px;
+    }
+
+    .icons, .icons-social {
         width: 75px;
         height: 75px;
         margin-right: 25px;
     }
 
-    .countrySection {
-        margin: 30px;
+    // .margin-conutry {
+    //     margin-left: 20px;
+    // }
+
+    .country-section {
+        margin: 0px;
+        padding: 40px 15px 20px 45px;
+        width: 270px;
+        height: 195px;
     }
 
     .clock {
@@ -249,48 +377,81 @@ p {
         height: 25px;
     }
 
+    .country-info {
+        margin: 10px 10px 10px 0px;
+    }
+
+    .street, .number {
+        width: 145px;
+    }
+
+    .arrow {
+        width: 20px;
+        height: 20px;
+    }
+
+    .margin-fix {
+        margin-top: 20px;
+    }
+
+    .margin-top {
+        margin-top: 40px;
+        margin-bottom: -45px;
+    }
+
     .article {
         display: block;
     }
+
+    .main-container {
+        width: 1250px;
+        // height: 1500px;
+        overflow: hidden;
+        // border: 1px solid red;
+        position: relative;
+    }
     
 
-    .countrtyImageNormal {
+    .country-image-normal {
         // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
         background-repeat: no-repeat; 
         background-size: cover; 
         background-position: right center; 
         position: absolute;
-        // display: block;
-        width: 520.65px;
-        height: 594.6px;
-        top: 300px;
-        left: 690px;
-        // opacity: 20%;
-        // overflow: hidden;
+        width: 587.65px;
+        height: 681.6px;
+        top: 169px;
+        left: 65%;
     }
 
   }  
   
-  @media only screen and (min-width: 1920px) {
-    body {
-        width: 1920px;
-        height: 1766px;
-        // padding: 70px;
+ @media (min-width: $desktop + 1) {
+    // body {
+    //     width: 1920px;
+    //     height: 1766px;
+    //     // padding: 70px;
+    // }
+
+    .container {
+        width: 1400px;
+        padding: 0px;
+        max-height: 1766px; 
     }
 
-    .mainContainer {
-        padding: 70px;
-     }
-     
+    // .main-container {
+    //     padding: 70px;
+    //  }
 
-    h1 {
+    .title {
         font-size: 64px;
         line-height: 74.4px;
+        margin: 20px 65px 0px 100px 
     }
 
     .type-info {
         line-height: 16px;
-        margin: 45px 160px 10px 0px;
+        margin: 45px 90px 0px 45px;
     }
 
 
@@ -299,42 +460,61 @@ p {
         line-height: 21px;
     }
 
-    .whiteBig {
+    .white-big{
         font-size: 36px;
         line-height: 53.89px;
     }
 
-    .mainSectionBlock {
+    .main-section-block {
+        // background-color: green;
         width: 1400px;
         max-width: none;
-        margin: 60px;
+        margin: 0px 60px 20px 60px;
+        // position: relative;
     }
 
-    .workMailandServiceNumber {
+    .mail-service {
         display: flex;
         white-space: nowrap;
     }
 
     .street {
-        width: 180px;
+        display: flex;
+        width: 175px;
     }
 
-    .marginContainer, .workMailandServiceNumber, h1 {
-        margin: 65px;
+    .number {
+        display: flex;
+        width: 175px;
+        margin: auto auto 10px 0px;
     }
 
-    .socialWebButtons {
-        margin: 65px 65px 35px 0px;
+    .margin-fix {
+        margin-top: 25px;
     }
 
-    .icons, .iconsSocial {
+    .mail-service, .margin-container {
+        margin: 30px 65px 0px 60px;
+    }
+
+    .margin-top {
+        margin-top: 90px;
+        margin-bottom: -16px;
+    }
+
+    .social-web-buttons {
+        margin: 65px 65px 35px 45px;
+    }
+
+    .icons, .icons-social {
         width: 100px;
         height: 100px;
         margin-right: 55px;
     }
 
-    .countrySection {
+    .country-section {
         margin: 0px;
+        padding: 40px 15px 20px 45px;
         width: 369px;
         height: 222px;
     }
@@ -348,21 +528,25 @@ p {
         display: block;
     }
 
+    .main-container {
+        width: 1800px;
+        // height: 1500px;
+        overflow: hidden;
+        // border: 1px solid red;
+        position: relative;
+    }
+    
 
-    .countrtyImageNormal {
-        // background-image: url('./page-contact-svg/RussiaSVG.svg'); 
+    .country-image-normal {
+        // background-image: url('.'); 
         background-repeat: no-repeat; 
         background-size: cover; 
         background-position: right center; 
         position: absolute;
-        // display: block;
         width: 802px;
         height: 996.27px;
-        top: 400px;
-        left: 1259.8px;
-        // right: 9px;
-        // opacity: 20%;
-        // overflow: hidden;
+        top: 60px;
+        left: 65%;
     }
 
   }  
